@@ -98,7 +98,7 @@ f) Save the PR URL for the Slack message.
 ### 6. Post to Slack
 
 Use the Slack MCP tool `slack_send_message` to post to channel
-`#memfault-issue-monitor` (or whatever channel is configured). Format:
+`#temp-nad-bugfix-bot-test` (channel ID: C0AEY673MKN). Format:
 
 For software bugs (with PR):
 ```
