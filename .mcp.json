@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "memfault": {
+      "command": "python3",
+      "args": ["/Users/charlesvestal/github/memfault-issue-monitor-demo/mcp-bridge.py"],
+      "env": {
+        "MEMFAULT_MCP_URL": "http://api.memfault.test:8000/api/v0/organizations/acme-inc/projects/shapemate/mcp",
+        "MEMFAULT_MCP_TOKEN": "oat_localMcpDemoToken1234567890ab"
+      }
+    }
+  }
+}
