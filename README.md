@@ -63,6 +63,34 @@ Memfault MCP tools natively.
 
 ## Local Setup
 
+### 0. Start the local Memfault environment
+
+All commands must run inside the conda `memfault` environment. If `inv` isn't
+on your PATH, use `conda run -n memfault uv run inv` instead.
+
+```bash
+cd ~/memfault
+
+# Start Docker backing services (Postgres, ClickHouse, Redis, etc.)
+inv dc.svc --detach --no-pull
+inv dev.wait-for-services-ready
+
+# Run DB migrations
+inv db.upgrade
+inv db.ch-upgrade
+
+# Start backend + frontend (daemonized)
+inv dev --daemonize
+inv dev.wait-for-dev-server
+
+# Populate mock data (creates orgs, projects, devices, issues, traces)
+# This takes a few minutes. Workers must be running first (inv dev starts them).
+MOCK_PASSWORD=testpassword123 inv mock --grant-elevated-privileges --lite
+```
+
+Verify it's working: open http://app.memfault.test:8000 and log in with
+`mock-e2e-user@nordicsemi.no` / `testpassword123`.
+
 ### 1. Clone repos
 
 ```bash
